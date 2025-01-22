@@ -1,0 +1,18 @@
+/* MedalList 스타일 */
+.table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 80%;
+  background-color: white;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}

@@ -1,0 +1,12 @@
+/* MedalItem 스타일 */
+.table td {
+  text-align: center;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #e2e2e2;
+}
