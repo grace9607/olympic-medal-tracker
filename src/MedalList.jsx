@@ -2,7 +2,7 @@ import React from "react";
 import MedalItem from "./MedalItem";
 import "./css/MedalList.css";
 
-const MedalList = ({ countries }) => {
+const MedalList = ({ countries, setEditingIndex, deleteCountry }) => {
   return (
     <table className="table">
       <thead>
@@ -16,7 +16,13 @@ const MedalList = ({ countries }) => {
       </thead>
       <tbody>
         {countries.map((country, index) => (
-          <MedalItem key={index} country={country} />
+          <MedalItem
+            key={index}
+            country={country}
+            index={index}
+            setEditingIndex={setEditingIndex}
+            deleteCountry={deleteCountry}
+          />
         ))}
       </tbody>
     </table>

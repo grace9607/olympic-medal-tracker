@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/MedalItem.css";
 
-const MedalItem = ({ country }) => {
+const MedalItem = ({ country, index, setEditingIndex, deleteCountry }) => {
   return (
     <tr>
       <td>{country.country}</td>
@@ -9,11 +9,12 @@ const MedalItem = ({ country }) => {
       <td>{country.silver}</td>
       <td>{country.bronze}</td>
       <td>
-        <form onSubmit={(e) => handleDelete(e, index)}>
-          <button type="submit" className="delete-button">
-            삭제
-          </button>
-        </form>
+        <button onClick={() => setEditingIndex(index)} className="edit-button">
+          수정
+        </button>
+        <button onClick={() => deleteCountry(index)} className="delete-button">
+          삭제
+        </button>
       </td>
     </tr>
   );
