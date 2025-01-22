@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./css/App.css"; // 스타일 파일을 import
+import "./App.css"; // 스타일 파일을 import
 
 const App = () => {
   const [countries, setCountries] = useState([]);
