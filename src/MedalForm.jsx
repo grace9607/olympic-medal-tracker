@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./css/MedalForm.css";
 
-const MedalForm = ({ addCountry }) => {
+const MedalForm = ({ addCountry, updateCountry }) => {
   const [formData, setFormData] = useState({
     country: "",
     gold: "",
     silver: "",
     bronze: "",
   });
+
+  const [isUpdateMode, setIsUpdateMode] = useState(false); // 추가/업데이트 모드 구분
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,31 +19,37 @@ const MedalForm = ({ addCountry }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // 숫자 값 검증 (0 이상이어야 함)
     if (
+      formData.country.trim() === "" ||
       formData.gold < 0 ||
       formData.silver < 0 ||
-      formData.bronze < 0 ||
-      formData.country.trim() === ""
+      formData.bronze < 0
     ) {
       alert("유효한 값을 입력하세요.");
       return;
     }
 
-    addCountry({
-      country: formData.country,
-      gold: parseInt(formData.gold) || 0,
-      silver: parseInt(formData.silver) || 0,
-      bronze: parseInt(formData.bronze) || 0,
-    });
+    if (isUpdateMode) {
+      // 업데이트 모드일 경우
+      updateCountry({
+        country: formData.country,
+        gold: parseInt(formData.gold) || 0,
+        silver: parseInt(formData.silver) || 0,
+        bronze: parseInt(formData.bronze) || 0,
+      });
+    } else {
+      // 추가 모드일 경우
+      addCountry({
+        country: formData.country,
+        gold: parseInt(formData.gold) || 0,
+        silver: parseInt(formData.silver) || 0,
+        bronze: parseInt(formData.bronze) || 0,
+      });
+    }
 
-    // 입력 필드 초기화
-    setFormData({
-      country: "",
-      gold: "",
-      silver: "",
-      bronze: "",
-    });
+    // 입력 필드 초기화 및 모드 변경
+    setFormData({ country: "", gold: "", silver: "", bronze: "" });
+    setIsUpdateMode(false);
   };
 
   return (
@@ -82,12 +90,22 @@ const MedalForm = ({ addCountry }) => {
         className="input"
         min="0"
       />
-      <button type="submit" className="submit-button">
-        국가 추가
-      </button>
-      <button type="submit" className="submit-button">
-        업데이트
-      </button>
+      <div className="button-group">
+        <button
+          type="submit"
+          className="submit-button"
+          onClick={() => setIsUpdateMode(false)}
+        >
+          국가 추가
+        </button>
+        <button
+          type="submit"
+          className="submit-button"
+          onClick={() => setIsUpdateMode(true)}
+        >
+          업데이트
+        </button>
+      </div>
     </form>
   );
 };

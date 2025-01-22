@@ -1,7 +1,12 @@
 import React from "react";
 import "./css/MedalItem.css";
 
-const MedalItem = ({ country }) => {
+const MedalItem = ({ country, index, deleteCountry }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 기본 동작(페이지 새로고침) 방지
+    deleteCountry(index); // 삭제 함수 호출
+  };
+
   return (
     <tr>
       <td>{country.country}</td>
@@ -9,7 +14,7 @@ const MedalItem = ({ country }) => {
       <td>{country.silver}</td>
       <td>{country.bronze}</td>
       <td>
-        <form onSubmit={(e) => handleDelete(e, index)}>
+        <form onSubmit={handleSubmit}>
           <button type="submit" className="delete-button">
             삭제
           </button>
