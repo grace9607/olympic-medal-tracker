@@ -8,6 +8,13 @@ const MedalItem = ({ country }) => {
       <td>{country.gold}</td>
       <td>{country.silver}</td>
       <td>{country.bronze}</td>
+      <td>
+        <form onSubmit={(e) => handleDelete(e, index)}>
+          <button type="submit" className="delete-button">
+            삭제
+          </button>
+        </form>
+      </td>
     </tr>
   );
 };
