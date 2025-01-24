@@ -19,7 +19,7 @@ const MedalList = ({ countries, deleteCountry }) => {
           <MedalItem
             key={index}
             country={country}
-            index={index} // 🟩 정확한 index 전달
+            index={index}
             deleteCountry={deleteCountry}
           />
         ))}
