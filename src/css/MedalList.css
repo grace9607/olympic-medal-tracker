@@ -1,18 +1,32 @@
 /* MedalList 스타일 */
 .table {
-  margin: 0 auto;
-  border-collapse: collapse;
-  width: 80%;
-  background-color: white;
+  width: 100%; /* 테이블을 부모 컨테이너 너비에 맞춤 */
+  max-width: 800px; /* 입력 필드 및 버튼의 최대 너비와 일치 */
+  margin: 0 auto; /* 테이블을 가운데 정렬 */
+  border-collapse: collapse; /* 테이블 경계선 합치기 */
 }
 
 .table th,
 .table td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 8px 12px;
   text-align: center;
 }
 
 .table th {
-  background-color: #f2f2f2;
+  background-color: #00509e !important; /*  헤더 배경색 (짙은 파란색) */
+  color: white !important; /*  헤더 텍스트 색상 */
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9; /* 짝수 행 배경색 */
+}
+
+.table tr:nth-child(odd) {
+  background-color: #e6f7ff; /* 홀수 행 배경색 (옅은 파란색) */
+}
+
+.table tr:hover {
+  background-color: #d1ecf1; /* 행 위에 마우스 올렸을 때 배경색 */
 }
